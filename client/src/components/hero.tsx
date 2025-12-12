@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import heroVideo from "@assets/generated_videos/earth_rotating_from_space_with_network_lines.mp4";
+import heroVideo from "@assets/videoplayback_1765550131157.mp4";
 
 export default function Hero() {
   const scrollToServices = () => {
