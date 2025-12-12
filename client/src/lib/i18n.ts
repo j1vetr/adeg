@@ -8,6 +8,7 @@ const resources = {
         home: "Ana Sayfa",
         services: "Hizmetler",
         whyUs: "Neden Biz",
+        packages: "Paketler",
         adsSystem: "ADS Sistemi",
         contact: "İletişim",
         getStarted: "HEMEN BAŞLA"
@@ -141,6 +142,7 @@ const resources = {
         home: "Home",
         services: "Services",
         whyUs: "Why Us",
+        packages: "Packages",
         adsSystem: "ADS System",
         contact: "Contact",
         getStarted: "GET STARTED"
@@ -274,6 +276,7 @@ const resources = {
         home: "Главная",
         services: "Услуги",
         whyUs: "Почему Мы",
+        packages: "Пакеты",
         adsSystem: "Система ADS",
         contact: "Контакты",
         getStarted: "НАЧАТЬ"
@@ -407,6 +410,7 @@ const resources = {
         home: "Startseite",
         services: "Dienstleistungen",
         whyUs: "Warum Wir",
+        packages: "Pakete",
         adsSystem: "ADS System",
         contact: "Kontakt",
         getStarted: "JETZT STARTEN"
@@ -540,6 +544,7 @@ const resources = {
         home: "Inicio",
         services: "Servicios",
         whyUs: "Por Qué Nosotros",
+        packages: "Paquetes",
         adsSystem: "Sistema ADS",
         contact: "Contacto",
         getStarted: "EMPEZAR"
