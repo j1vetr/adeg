@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
+  const { t } = useTranslation();
+  
   const scrollToServices = () => {
     document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -34,15 +37,15 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-primary font-bold tracking-[0.2em] text-sm md:text-base mb-4 uppercase">
-            Yeni Nesil Denizcilik Bağlantısı
+            {t('hero.subtitle')}
           </h2>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight font-display">
-            KÜRESEL <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200 text-glow">BAĞLANTI</span>
+            {t('hero.titleStart')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200 text-glow">{t('hero.titleHighlight')}</span>
             <br />
-            GÜVENDE.
+            {t('hero.titleEnd')}
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg md:text-xl mb-10 font-light">
-            Dünyanın her yerinde denizcilik operasyonları için premium Starlink entegrasyonu ve gelişmiş Firewall hizmetleri.
+            {t('hero.description')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -51,7 +54,7 @@ export default function Hero() {
               className="bg-primary text-black hover:bg-primary/90 text-lg font-bold px-8 h-12"
               onClick={scrollToServices}
             >
-              HİZMETLERİMİZ
+              {t('hero.ourServices')}
             </Button>
             <Button 
               size="lg" 
@@ -59,7 +62,7 @@ export default function Hero() {
               className="border-white/20 text-white hover:bg-white/10 text-lg px-8 h-12 backdrop-blur-sm"
               onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
             >
-              İLETİŞİM
+              {t('hero.contactUs')}
             </Button>
           </div>
         </motion.div>

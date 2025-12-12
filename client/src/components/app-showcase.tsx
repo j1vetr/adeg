@@ -3,12 +3,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import desktopImg from "@assets/masa1_1765548406035.png";
 import mobileImg from "@assets/mobil1_1765548415955.png";
 import { Smartphone, Zap, ShieldCheck } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function AppShowcase() {
+  const { t } = useTranslation();
+
   return (
     <section id="app" className="py-24 bg-black/50 relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 right-0 -translate-x-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -19,18 +22,14 @@ export default function AppShowcase() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-primary font-bold tracking-[0.2em] mb-2 uppercase">ADS Otomasyon Sistemi</h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-white font-display mb-6 leading-tight">
-              Siz Uğraşmayın,<br />
-              <span className="text-gray-400">Sistem Yönetsin.</span>
+            <h2 className="text-primary font-bold tracking-[0.2em] mb-2 uppercase">{t('app.title')}</h2>
+            <h3 className="text-3xl md:text-5xl font-bold text-white font-display mb-6 leading-tight whitespace-pre-line">
+              {t('app.mainTitle')}
             </h3>
             
             <div className="bg-white/5 border-l-4 border-primary p-6 rounded-r-xl mb-8 backdrop-blur-sm">
               <p className="text-gray-200 text-lg leading-relaxed">
-                Firma olarak operasyonel yükünüzü sıfıra indirin. Bizim geliştirdiğimiz 
-                <span className="text-primary font-bold"> %100 otomatik yazılım</span> sayesinde, 
-                gemideki kullanıcılar herhangi bir onay sürecine takılmadan, kendi ihtiyaçlarına göre 
-                ek internet paketlerini anında satın alabilirler.
+                {t('app.description')}
               </p>
             </div>
 
@@ -40,8 +39,8 @@ export default function AppShowcase() {
                   <Zap className="text-primary w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg mb-1">Otomatik Satın Alma</h4>
-                  <p className="text-gray-500 text-sm">Mürettebat, şirket onayına ihtiyaç duymadan uygulama üzerinden paket alabilir.</p>
+                  <h4 className="text-white font-bold text-lg mb-1">{t('app.feature1Title')}</h4>
+                  <p className="text-gray-500 text-sm">{t('app.feature1Desc')}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 group">
@@ -49,8 +48,8 @@ export default function AppShowcase() {
                   <ShieldCheck className="text-primary w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg mb-1">Sıfır Operasyonel Yük</h4>
-                  <p className="text-gray-500 text-sm">Firma yöneticilerinin araya girmesine gerek kalmadan sistem kendi kendine işler.</p>
+                  <h4 className="text-white font-bold text-lg mb-1">{t('app.feature2Title')}</h4>
+                  <p className="text-gray-500 text-sm">{t('app.feature2Desc')}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 group">
@@ -58,8 +57,8 @@ export default function AppShowcase() {
                   <Smartphone className="text-primary w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg mb-1">Mobil & Masaüstü Erişim</h4>
-                  <p className="text-gray-500 text-sm">Kullanıcı dostu arayüz ile gemideki herkes sisteme kolayca erişebilir.</p>
+                  <h4 className="text-white font-bold text-lg mb-1">{t('app.feature3Title')}</h4>
+                  <p className="text-gray-500 text-sm">{t('app.feature3Desc')}</p>
                 </div>
               </div>
             </div>
@@ -74,8 +73,8 @@ export default function AppShowcase() {
           >
             <Tabs defaultValue="desktop" className="w-full">
               <TabsList className="grid w-full grid-cols-2 bg-white/5 border border-white/10 mb-8 p-1 rounded-lg">
-                <TabsTrigger value="desktop" className="rounded-md data-[state=active]:bg-primary data-[state=active]:text-black font-bold transition-all">Masaüstü</TabsTrigger>
-                <TabsTrigger value="mobile" className="rounded-md data-[state=active]:bg-primary data-[state=active]:text-black font-bold transition-all">Mobil</TabsTrigger>
+                <TabsTrigger value="desktop" className="rounded-md data-[state=active]:bg-primary data-[state=active]:text-black font-bold transition-all">{t('app.desktop')}</TabsTrigger>
+                <TabsTrigger value="mobile" className="rounded-md data-[state=active]:bg-primary data-[state=active]:text-black font-bold transition-all">{t('app.mobile')}</TabsTrigger>
               </TabsList>
               
               <TabsContent value="desktop" className="relative mt-0">

@@ -1,38 +1,41 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Satellite, ShieldCheck, Globe, Wifi, Zap, DollarSign, Package, CreditCard } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Services() {
+  const { t } = useTranslation();
+
   const features = [
     {
       icon: <Globe className="w-10 h-10 text-primary" />,
-      title: "Küresel Kapsam",
-      description: "Dünyanın her yerinde yüksek hızlı internet."
+      title: t('services.globalCoverage'),
+      description: t('services.globalCoverageDesc')
     },
     {
       icon: <Zap className="w-10 h-10 text-primary" />,
-      title: "En Hızlı Bağlantı",
-      description: "En hızlı uydu tabanlı denizcilik internet hizmeti."
+      title: t('services.fastestConn'),
+      description: t('services.fastestConnDesc')
     },
     {
       icon: <Wifi className="w-10 h-10 text-primary" />,
-      title: "Güvenilirlik",
-      description: "Küresel kapsama alanıyla kesintisiz internet."
+      title: t('services.reliability'),
+      description: t('services.reliabilityDesc')
     },
     {
       icon: <DollarSign className="w-10 h-10 text-primary" />,
-      title: "Bütçe Kontrolü",
-      description: "Düşük maliyetli anten, 1 TB'ye kadar paket seçeneği."
+      title: t('services.budgetControl'),
+      description: t('services.budgetControlDesc')
     },
     {
       icon: <Package className="w-10 h-10 text-primary" />,
-      title: "Kolay Kurulum & Sevkiyat",
-      description: "En yeni nesil anten teknolojisi, hafif kompakt anten."
+      title: t('services.easyInstall'),
+      description: t('services.easyInstallDesc')
     },
     {
       icon: <CreditCard className="w-10 h-10 text-primary" />,
-      title: "Seçilebilir Ödeme Planları",
-      description: "Her türlü ihtiyacı karşılayacak çeşitli planlar."
+      title: t('services.paymentPlans'),
+      description: t('services.paymentPlansDesc')
     }
   ];
 
@@ -44,8 +47,8 @@ export default function Services() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-primary font-bold tracking-[0.2em] mb-2 uppercase">Hizmetlerimiz</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-white font-display">Neden Adegloba Space?</h3>
+          <h2 className="text-primary font-bold tracking-[0.2em] mb-2 uppercase">{t('services.title')}</h2>
+          <h3 className="text-3xl md:text-4xl font-bold text-white font-display">{t('services.subtitle')}</h3>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

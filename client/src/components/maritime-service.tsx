@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Map, Wifi, Anchor } from "lucide-react";
 import starlinkImg from "@assets/lax1_1765553108513.jpg";
+import { useTranslation } from "react-i18next";
 
 export default function MaritimeService() {
+  const { t } = useTranslation();
+
   return (
     <section id="maritime" className="py-24 bg-black/40 relative border-b border-white/5">
       <div className="container mx-auto px-6">
@@ -18,18 +21,16 @@ export default function MaritimeService() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider mb-6">
               <Anchor className="w-3 h-3" />
-              <span>Premium Maritime Çözüm</span>
+              <span>{t('maritime.badge')}</span>
             </div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-white font-display mb-6 leading-tight">
-              Starlink Maritime <br/>
-              <span className="text-gray-400">& Firewall Hizmeti</span>
+              {t('maritime.title')} <br/>
+              <span className="text-gray-400">{t('maritime.subtitle')}</span>
             </h2>
             
             <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-              Gemileriniz için yüksek hızlı, düşük gecikmeli uydu interneti. 
-              Entegre Firewall hizmetimiz ile siber güvenlik endişesi yaşamadan, 
-              denizlerin ortasında ofis konforunda bağlantı sağlayın.
+              {t('maritime.description')}
             </p>
 
             <div className="space-y-6 mb-10">
@@ -38,8 +39,8 @@ export default function MaritimeService() {
                   <Wifi className="text-primary w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg mb-1">Kesintisiz Bağlantı</h4>
-                  <p className="text-gray-500 text-sm">350 Mbps'e varan indirme hızları ile okyanus aşırı iletişim.</p>
+                  <h4 className="text-white font-bold text-lg mb-1">{t('maritime.feature1Title')}</h4>
+                  <p className="text-gray-500 text-sm">{t('maritime.feature1Desc')}</p>
                 </div>
               </div>
               
@@ -48,8 +49,8 @@ export default function MaritimeService() {
                   <ShieldCheck className="text-primary w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-lg mb-1">Entegre Güvenlik</h4>
-                  <p className="text-gray-500 text-sm">Gelişmiş firewall koruması ile ağınız her zaman güvende.</p>
+                  <h4 className="text-white font-bold text-lg mb-1">{t('maritime.feature2Title')}</h4>
+                  <p className="text-gray-500 text-sm">{t('maritime.feature2Desc')}</p>
                 </div>
               </div>
             </div>
@@ -60,7 +61,7 @@ export default function MaritimeService() {
             >
               <a href="https://lacivertteknoloji.com/starlink-haritasi" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 <Map className="w-5 h-5" />
-                Starlink Haritası
+                {t('maritime.mapButton')}
               </a>
             </Button>
           </motion.div>
@@ -84,8 +85,8 @@ export default function MaritimeService() {
               {/* Floating Badge */}
               <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl z-20 flex items-center justify-between">
                 <div>
-                  <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">Aktif Kapsama</div>
-                  <div className="text-white font-bold font-display">Global Okyanus Ağı</div>
+                  <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">{t('maritime.activeCoverage')}</div>
+                  <div className="text-white font-bold font-display">{t('maritime.globalNetwork')}</div>
                 </div>
                 <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
               </div>

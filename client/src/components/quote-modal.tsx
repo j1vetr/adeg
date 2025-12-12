@@ -14,15 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
-
-const servicesList = [
-  { id: "data", label: "Starlink Veri Hizmeti" },
-  { id: "hardware", label: "Starlink Anten & Donanım" },
-  { id: "installation", label: "Uçtan Uca Kurulum Hizmeti" },
-  { id: "firewall", label: "Yönetilen Firewall & Güvenlik" },
-  { id: "support", label: "7/24 Teknik Destek & Bakım" },
-  { id: "network", label: "Gemi İçi Network Yönetimi" },
-];
+import { useTranslation } from "react-i18next";
 
 interface QuoteModalProps {
   trigger?: React.ReactNode;
@@ -33,6 +25,16 @@ export function QuoteModal({ trigger, defaultService }: QuoteModalProps) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { t } = useTranslation();
+
+  const servicesList = [
+    { id: "data", label: t('modal.serviceList.data') },
+    { id: "hardware", label: t('modal.serviceList.hardware') },
+    { id: "installation", label: t('modal.serviceList.installation') },
+    { id: "firewall", label: t('modal.serviceList.firewall') },
+    { id: "support", label: t('modal.serviceList.support') },
+    { id: "network", label: t('modal.serviceList.network') },
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,8 +45,8 @@ export function QuoteModal({ trigger, defaultService }: QuoteModalProps) {
       setLoading(false);
       setOpen(false);
       toast({
-        title: "Teklif Talebiniz Alındı",
-        description: "En kısa sürede sizinle iletişime geçeceğiz.",
+        title: t('modal.successTitle'),
+        description: t('modal.successDesc'),
       });
     }, 1500);
   };
@@ -54,39 +56,39 @@ export function QuoteModal({ trigger, defaultService }: QuoteModalProps) {
       <DialogTrigger asChild>
         {trigger}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] bg-black/95 border-primary/20 backdrop-blur-xl text-white">
+      <DialogContent className="sm:max-w-[600px] bg-black/95 border-primary/20 backdrop-blur-xl text-white max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-display text-primary">Teklif Alın</DialogTitle>
+          <DialogTitle className="text-2xl font-display text-primary">{t('modal.title')}</DialogTitle>
           <DialogDescription className="text-gray-400">
-            İhtiyaçlarınıza özel denizcilik çözümleri için formu doldurun.
+            {t('modal.desc')}
           </DialogDescription>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="grid gap-6 py-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="company">Firma İsmi</Label>
-              <Input id="company" required placeholder="Firma Adı" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
+              <Label htmlFor="company">{t('modal.company')}</Label>
+              <Input id="company" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="name">Yetkili Kişi</Label>
-              <Input id="name" required placeholder="Ad Soyad" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
+              <Label htmlFor="name">{t('modal.name')}</Label>
+              <Input id="name" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
             </div>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="email">E-posta</Label>
-              <Input id="email" type="email" required placeholder="ornek@sirket.com" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
+              <Label htmlFor="email">{t('modal.email')}</Label>
+              <Input id="email" type="email" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="phone">Telefon</Label>
-              <Input id="phone" type="tel" required placeholder="+90 555 000 0000" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
+              <Label htmlFor="phone">{t('modal.phone')}</Label>
+              <Input id="phone" type="tel" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
             </div>
           </div>
 
           <div className="space-y-3">
-            <Label>İlgilendiğiniz Hizmetler</Label>
+            <Label>{t('modal.services')}</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 p-4 rounded-lg border border-white/10 bg-white/5">
               {servicesList.map((service) => (
                 <div key={service.id} className="flex items-center space-x-2">
@@ -104,10 +106,10 @@ export function QuoteModal({ trigger, defaultService }: QuoteModalProps) {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="message">Ek Notlar</Label>
+            <Label htmlFor="message">{t('modal.notes')}</Label>
             <Textarea 
               id="message" 
-              placeholder="Varsa gemi sayısı, rota bilgisi veya özel talepleriniz..." 
+              placeholder={t('modal.notesPlaceholder')} 
               className="bg-white/5 border-white/10 focus:border-primary/50 text-white min-h-[80px]" 
             />
           </div>
@@ -117,12 +119,12 @@ export function QuoteModal({ trigger, defaultService }: QuoteModalProps) {
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Gönderiliyor...
+                  {t('modal.sending')}
                 </>
               ) : (
                 <>
                   <Send className="mr-2 h-4 w-4" />
-                  Teklif İste
+                  {t('modal.submit')}
                 </>
               )}
             </Button>

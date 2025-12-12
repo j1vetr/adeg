@@ -3,14 +3,17 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { Zap, Globe, Shield, ArrowDown, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { QuoteModal } from "@/components/quote-modal";
+import { useTranslation } from "react-i18next";
 
 export default function Packages() {
+  const { t } = useTranslation();
+
   const tiers = [
-    { size: "50 GB", recommended: false },
-    { size: "100 GB", recommended: false },
-    { size: "250 GB", recommended: true },
-    { size: "500 GB", recommended: false },
-    { size: "1 TB", recommended: false },
+    { size: "50 GB", recommended: false, features: [t('packages.features.basic'), t('packages.features.email')] },
+    { size: "100 GB", recommended: false, features: [t('packages.features.standard'), t('packages.features.web')] },
+    { size: "250 GB", recommended: true, features: [t('packages.features.active'), t('packages.features.videoConf')] },
+    { size: "500 GB", recommended: false, features: [t('packages.features.heavy'), t('packages.features.k4Video')] },
+    { size: "1 TB", recommended: false, features: [t('packages.features.pro'), t('packages.features.crew')] },
   ];
 
   return (
@@ -23,10 +26,10 @@ export default function Packages() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-primary font-bold tracking-[0.2em] mb-2 uppercase text-sm">Esnek Planlar</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-white font-display mb-6">Veri Paketleri</h3>
+          <h2 className="text-primary font-bold tracking-[0.2em] mb-2 uppercase text-sm">{t('packages.title')}</h2>
+          <h3 className="text-4xl md:text-5xl font-bold text-white font-display mb-6">{t('packages.subtitle')}</h3>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            İhtiyacınıza uygun paketi seçin. Tüm paketlerde yüksek hız ve düşük gecikme garantisi.
+            {t('packages.description')}
           </p>
         </div>
 
@@ -36,7 +39,7 @@ export default function Packages() {
            <div className="relative group rounded-2xl bg-black overflow-hidden border border-white/10 h-[200px]">
              <div className="absolute inset-[2px] bg-black/80 rounded-xl z-10 backdrop-blur-sm" />
              
-             {/* Animated Download Icons - Z-index 20 to be above background */}
+             {/* Animated Download Icons */}
              <div className="absolute left-6 top-0 h-full w-8 z-20 pointer-events-none overflow-hidden">
                <div className="animate-drop-down absolute left-0 w-6 h-6 flex items-center justify-center">
                   <ArrowDown className="w-full h-full text-primary opacity-80" />
@@ -64,7 +67,7 @@ export default function Packages() {
                  <div className="mb-4 p-3 bg-white/5 rounded-full group-hover:bg-primary/20 transition-colors">
                     <Zap className="w-8 h-8 text-primary" />
                  </div>
-                 <div className="text-gray-400 text-sm uppercase tracking-wider font-medium mb-1">Download Hızı</div>
+                 <div className="text-gray-400 text-sm uppercase tracking-wider font-medium mb-1">{t('packages.downloadSpeed')}</div>
                  <div className="text-6xl font-bold text-white font-display tracking-tight group-hover:scale-105 transition-transform duration-300">
                    325 <span className="text-2xl text-primary/80 font-sans font-normal">Mbps</span>
                  </div>
@@ -103,7 +106,7 @@ export default function Packages() {
                  <div className="mb-4 p-3 bg-white/5 rounded-full group-hover:bg-primary/20 transition-colors">
                     <Globe className="w-8 h-8 text-primary" />
                  </div>
-                 <div className="text-gray-400 text-sm uppercase tracking-wider font-medium mb-1">Upload Hızı</div>
+                 <div className="text-gray-400 text-sm uppercase tracking-wider font-medium mb-1">{t('packages.uploadSpeed')}</div>
                  <div className="text-6xl font-bold text-white font-display tracking-tight group-hover:scale-105 transition-transform duration-300">
                    25 <span className="text-2xl text-primary/80 font-sans font-normal">Mbps</span>
                  </div>
@@ -137,7 +140,7 @@ export default function Packages() {
                 <CardHeader className="text-center pt-10 pb-6 relative">
                   {tier.recommended && (
                     <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider text-black bg-primary px-2 py-0.5 rounded-full">
-                      Popüler
+                      {t('packages.popular')}
                     </span>
                   )}
                   <CardTitle className={`text-4xl font-bold font-display tracking-tight ${tier.recommended ? 'text-primary text-glow' : 'text-white'}`}>
@@ -146,18 +149,18 @@ export default function Packages() {
                 </CardHeader>
                 
                 <CardContent className="flex-grow flex flex-col items-center justify-center space-y-4 px-6 text-center">
-                   <p className="text-gray-400 text-sm">Starlink Maritime<br/>Yüksek Hızlı İnternet</p>
+                   <p className="text-gray-400 text-sm whitespace-pre-line">{t('packages.maritimeInternet')}</p>
                    
                    <div className="w-full h-px bg-white/5 my-4" />
                    
                    <div className="space-y-2">
                      <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
                         <Shield className="w-3 h-3 text-primary" />
-                        <span>Güvenli Bağlantı</span>
+                        <span>{t('packages.secureConn')}</span>
                      </div>
                      <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
                         <Globe className="w-3 h-3 text-primary" />
-                        <span>Global Kapsama</span>
+                        <span>{t('packages.globalRoaming')}</span>
                      </div>
                    </div>
                 </CardContent>
@@ -174,7 +177,7 @@ export default function Packages() {
                             : 'border-white/20 text-white hover:bg-white/10 hover:border-white/40'
                           }`}
                       >
-                        Hemen Başvur
+                        {t('packages.applyNow')}
                       </Button>
                     }
                   />

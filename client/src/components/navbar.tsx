@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logoUrl from "../assets/logo.png";
 import { QuoteModal } from "@/components/quote-modal";
+import { useTranslation } from "react-i18next";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,11 +27,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Ana Sayfa", href: "#" },
-    { name: "Hizmetler", href: "#maritime" },
-    { name: "Neden Biz", href: "#services" },
-    { name: "ADS Sistemi", href: "#app" },
-    { name: "İletişim", href: "#contact" },
+    { name: t('nav.home'), href: "#" },
+    { name: t('nav.services'), href: "#maritime" },
+    { name: t('nav.whyUs'), href: "#services" },
+    { name: t('nav.adsSystem'), href: "#app" },
+    { name: t('nav.contact'), href: "#contact" },
   ];
 
   const scrollToSection = (id: string) => {
@@ -33,6 +41,18 @@ export default function Navbar() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
+
+  const languages = [
+    { code: 'tr', label: 'TR' },
+    { code: 'en', label: 'EN' },
+    { code: 'ru', label: 'RU' },
+    { code: 'de', label: 'DE' },
+    { code: 'es', label: 'ES' },
+  ];
 
   return (
     <nav
@@ -58,22 +78,63 @@ export default function Navbar() {
             </button>
           ))}
           
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-gray-300 hover:text-primary hover:bg-white/5">
+                <Globe className="h-5 w-5" />
+                <span className="ml-2 font-bold">{i18n.language.toUpperCase()}</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-black/95 border-white/10 text-white backdrop-blur-xl">
+              {languages.map((lang) => (
+                <DropdownMenuItem 
+                  key={lang.code}
+                  onClick={() => changeLanguage(lang.code)}
+                  className="hover:bg-primary/20 hover:text-primary cursor-pointer font-medium"
+                >
+                  {lang.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <QuoteModal 
             trigger={
               <Button className="bg-primary text-black hover:bg-primary/90 font-bold">
-                HEMEN BAŞLA
+                {t('nav.getStarted')}
               </Button>
             }
           />
         </div>
 
         {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-gray-300 hover:text-primary hover:bg-white/5">
+                <Globe className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-black/95 border-white/10 text-white backdrop-blur-xl">
+              {languages.map((lang) => (
+                <DropdownMenuItem 
+                  key={lang.code}
+                  onClick={() => changeLanguage(lang.code)}
+                  className="hover:bg-primary/20 hover:text-primary cursor-pointer font-medium"
+                >
+                  {lang.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <button
+            className="text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -91,7 +152,7 @@ export default function Navbar() {
           <QuoteModal 
             trigger={
               <Button className="w-full bg-primary text-black hover:bg-primary/90 font-bold">
-                HEMEN BAŞLA
+                {t('nav.getStarted')}
               </Button>
             }
           />
