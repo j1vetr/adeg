@@ -14,11 +14,11 @@ const resources = {
         getStarted: "HEMEN BAŞLA"
       },
       hero: {
-        subtitle: "Yeni Nesil Denizcilik Bağlantısı",
-        titleStart: "KÜRESEL",
-        titleHighlight: "BAĞLANTI",
-        titleEnd: "GÜVENDE.",
-        description: "Dünyanın her yerinde denizcilik operasyonları için premium Starlink entegrasyonu ve gelişmiş Firewall hizmetleri.",
+        subtitle: "Denizcilik İçin Uydu İnterneti",
+        titleStart: "STARLINK",
+        titleHighlight: "MARITIME",
+        titleEnd: "HİZMETLERİ",
+        description: "Gemileriniz için yüksek hızlı, düşük gecikmeli Starlink bağlantısı. Premium entegrasyon ve 7/24 teknik destek ile denizlerde kesintisiz iletişim.",
         ourServices: "HİZMETLERİMİZ",
         contactUs: "İLETİŞİM"
       },
@@ -148,11 +148,11 @@ const resources = {
         getStarted: "GET STARTED"
       },
       hero: {
-        subtitle: "Next Gen Maritime Connectivity",
-        titleStart: "GLOBAL",
-        titleHighlight: "CONNECTIVITY",
-        titleEnd: "SECURED.",
-        description: "Premium Starlink integration and advanced Firewall services for maritime operations worldwide.",
+        subtitle: "Satellite Internet for Maritime",
+        titleStart: "STARLINK",
+        titleHighlight: "MARITIME",
+        titleEnd: "SERVICES",
+        description: "High-speed, low-latency Starlink connectivity for your vessels. Premium integration and 24/7 technical support for seamless communication at sea.",
         ourServices: "OUR SERVICES",
         contactUs: "CONTACT US"
       },
@@ -282,11 +282,11 @@ const resources = {
         getStarted: "НАЧАТЬ"
       },
       hero: {
-        subtitle: "Связь Нового Поколения",
-        titleStart: "ГЛОБАЛЬНАЯ",
-        titleHighlight: "СВЯЗЬ",
-        titleEnd: "ЗАЩИЩЕНА.",
-        description: "Премиальная интеграция Starlink и передовые услуги Firewall для морских операций по всему миру.",
+        subtitle: "Спутниковый Интернет для Судов",
+        titleStart: "STARLINK",
+        titleHighlight: "MARITIME",
+        titleEnd: "УСЛУГИ",
+        description: "Высокоскоростное подключение Starlink с низкой задержкой для ваших судов. Премиальная интеграция и техническая поддержка 24/7.",
         ourServices: "НАШИ УСЛУГИ",
         contactUs: "СВЯЗАТЬСЯ"
       },
@@ -416,11 +416,11 @@ const resources = {
         getStarted: "JETZT STARTEN"
       },
       hero: {
-        subtitle: "Maritime Konnektivität der Nächsten Generation",
-        titleStart: "GLOBALE",
-        titleHighlight: "KONNEKTIVITÄT",
-        titleEnd: "GESICHERT.",
-        description: "Premium Starlink-Integration und fortschrittliche Firewall-Dienste für maritime Operationen weltweit.",
+        subtitle: "Satelliteninternet für die Schifffahrt",
+        titleStart: "STARLINK",
+        titleHighlight: "MARITIME",
+        titleEnd: "DIENSTE",
+        description: "Hochgeschwindigkeits-Starlink-Verbindung mit geringer Latenz für Ihre Schiffe. Premium-Integration und technischer Support rund um die Uhr.",
         ourServices: "UNSERE LEISTUNGEN",
         contactUs: "KONTAKT"
       },
@@ -550,11 +550,11 @@ const resources = {
         getStarted: "EMPEZAR"
       },
       hero: {
-        subtitle: "Conectividad Marítima de Nueva Generación",
-        titleStart: "CONECTIVIDAD",
-        titleHighlight: "GLOBAL",
-        titleEnd: "ASEGURADA.",
-        description: "Integración premium de Starlink y servicios avanzados de Firewall para operaciones marítimas en todo el mundo.",
+        subtitle: "Internet Satelital para el Sector Marítimo",
+        titleStart: "STARLINK",
+        titleHighlight: "MARITIME",
+        titleEnd: "SERVICIOS",
+        description: "Conectividad Starlink de alta velocidad y baja latencia para sus embarcaciones. Integración premium y soporte técnico 24/7.",
         ourServices: "NUESTROS SERVICIOS",
         contactUs: "CONTÁCTENOS"
       },
