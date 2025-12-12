@@ -67,44 +67,37 @@ export default function Contact() {
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-5 gap-8 items-stretch">
-          {/* Contact Cards */}
-          <div className="lg:col-span-3 grid md:grid-cols-3 gap-4">
+          {/* Contact Cards - Compact */}
+          <div className="lg:col-span-3 flex flex-col gap-3">
             {contactItems.map((item, index) => (
               <motion.a
                 key={index}
                 href={item.link}
                 target={item.isExternal ? "_blank" : undefined}
                 rel={item.isExternal ? "noopener noreferrer" : undefined}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-500 flex flex-col"
+                className="group relative p-4 rounded-xl bg-white/[0.02] border border-white/10 hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 flex items-center gap-4"
               >
-                {/* Hover Glow */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                
                 {/* Icon */}
-                <div className="relative mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(255,222,89,0.2)] transition-all duration-300">
-                    <item.icon className="w-6 h-6 text-primary" />
-                  </div>
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(255,222,89,0.15)] transition-all duration-300">
+                  <item.icon className="w-5 h-5 text-primary" />
                 </div>
                 
                 {/* Content */}
-                <div className="relative flex-grow">
-                  <h4 className="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                <div className="flex-grow min-w-0">
+                  <h4 className="text-white font-semibold text-sm mb-0.5 group-hover:text-primary transition-colors">
                     {item.title}
                   </h4>
-                  <p className="text-gray-400 text-sm whitespace-pre-line leading-relaxed">
-                    {item.content}
+                  <p className="text-gray-400 text-sm truncate">
+                    {item.content.replace(/\n/g, ', ')}
                   </p>
                 </div>
 
                 {/* Arrow */}
-                <div className="relative mt-4 flex items-center text-primary/50 group-hover:text-primary text-sm font-medium transition-colors">
-                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                </div>
+                <ArrowRight className="w-4 h-4 text-primary/30 group-hover:text-primary flex-shrink-0 transform group-hover:translate-x-1 transition-all" />
               </motion.a>
             ))}
           </div>
