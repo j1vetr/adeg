@@ -86,12 +86,12 @@ export default function Navbar() {
                 <span className="ml-2 font-bold">{i18n.language.toUpperCase()}</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-black/95 border-white/10 text-white backdrop-blur-xl">
+            <DropdownMenuContent align="end" className="bg-black/95 border-white/10 text-white backdrop-blur-xl p-0 min-w-[80px]">
               {languages.map((lang) => (
                 <DropdownMenuItem 
                   key={lang.code}
                   onClick={() => changeLanguage(lang.code)}
-                  className="hover:bg-primary/20 hover:text-primary cursor-pointer font-medium"
+                  className="hover:bg-primary/20 focus:bg-primary/20 focus:text-primary hover:text-primary cursor-pointer font-medium rounded-none justify-center py-2.5"
                 >
                   {lang.label}
                 </DropdownMenuItem>
@@ -116,12 +116,12 @@ export default function Navbar() {
                 <Globe className="h-5 w-5" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-black/95 border-white/10 text-white backdrop-blur-xl">
+            <DropdownMenuContent align="end" className="bg-black/95 border-white/10 text-white backdrop-blur-xl p-0 min-w-[80px]">
               {languages.map((lang) => (
                 <DropdownMenuItem 
                   key={lang.code}
                   onClick={() => changeLanguage(lang.code)}
-                  className="hover:bg-primary/20 hover:text-primary cursor-pointer font-medium"
+                  className="hover:bg-primary/20 focus:bg-primary/20 focus:text-primary hover:text-primary cursor-pointer font-medium rounded-none justify-center py-2.5"
                 >
                   {lang.label}
                 </DropdownMenuItem>
