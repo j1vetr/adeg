@@ -11,8 +11,8 @@ interface QuoteData {
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: 587,
-  secure: false,
+  port: parseInt(process.env.SMTP_PORT || '587'),
+  secure: process.env.SMTP_SECURE === 'true',
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASSWORD,
@@ -47,7 +47,8 @@ export async function sendQuoteEmails(quote: QuoteData) {
         body { font-family: 'Poppins', Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; margin: 0; padding: 0; }
         .container { max-width: 600px; margin: 30px auto; background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .header { background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); color: #ffde59; padding: 30px; text-align: center; }
-        .header h1 { margin: 0; font-size: 28px; font-weight: 700; }
+        .header img { max-height: 60px; margin-bottom: 15px; }
+        .header h1 { margin: 0; font-size: 24px; font-weight: 600; color: #ffffff; }
         .content { padding: 30px; }
         .highlight { background-color: #fff9e6; border-left: 4px solid #ffde59; padding: 15px; margin: 20px 0; border-radius: 4px; }
         .footer { background: #000000; color: #999; text-align: center; padding: 20px; font-size: 12px; }
@@ -57,11 +58,12 @@ export async function sendQuoteEmails(quote: QuoteData) {
     <body>
       <div class="container">
         <div class="header">
-          <h1>🚢 Teklif Talebiniz Alındı</h1>
+          <img src="https://adegloba.space/assets/logo-Dgu5770B.png" alt="AdeGloba Space" />
+          <h1>Teklif Talebiniz Alındı</h1>
         </div>
         <div class="content">
           <p>Sayın <strong>${quote.contactName}</strong>,</p>
-          <p>AdeGloba Space ailesine hoş geldiniz! Teklif talebiniz başarıyla alınmıştır.</p>
+          <p>Teklif talebiniz tarafımıza ulaşmıştır. Başvurunuz için teşekkür ederiz.</p>
           
           <div class="highlight">
             <strong>Talep Detayları:</strong><br>
@@ -97,8 +99,9 @@ export async function sendQuoteEmails(quote: QuoteData) {
       <style>
         body { font-family: 'Poppins', Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; margin: 0; padding: 0; }
         .container { max-width: 700px; margin: 30px auto; background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .header { background: linear-gradient(135deg, #ffde59 0%, #ffc107 100%); color: #000; padding: 30px; text-align: center; }
-        .header h1 { margin: 0; font-size: 28px; font-weight: 700; }
+        .header { background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); color: #ffde59; padding: 30px; text-align: center; }
+        .header img { max-height: 50px; margin-bottom: 10px; }
+        .header h1 { margin: 0; font-size: 24px; font-weight: 600; color: #ffde59; }
         .content { padding: 30px; }
         .info-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
         .info-table th { background: #000; color: #ffde59; padding: 12px; text-align: left; font-weight: 600; }
@@ -111,7 +114,8 @@ export async function sendQuoteEmails(quote: QuoteData) {
     <body>
       <div class="container">
         <div class="header">
-          <h1>🔔 Yeni Teklif Talebi</h1>
+          <img src="https://adegloba.space/assets/logo-Dgu5770B.png" alt="AdeGloba Space" />
+          <h1>Yeni Teklif Talebi</h1>
         </div>
         <div class="content">
           <p class="urgent">⚠️ Yeni bir müşteri teklif talebi oluşturdu. Lütfen en kısa sürede yanıt verin.</p>
