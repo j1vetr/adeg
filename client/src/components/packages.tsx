@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Zap, Globe, Shield } from "lucide-react";
+import { Zap, Globe, Shield, ArrowDown, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Packages() {
@@ -29,17 +29,23 @@ export default function Packages() {
           </p>
         </div>
 
-        {/* Speed Specs Banner - Redesigned with animated border */}
+        {/* Speed Specs Banner - Redesigned with animated directional icons */}
         <div className="max-w-4xl mx-auto mb-20 grid md:grid-cols-2 gap-8">
            {/* Download Card */}
-           <div className="relative group rounded-2xl bg-black overflow-hidden">
-             {/* Animated Border */}
-             <div className="absolute inset-0 opacity-75">
-                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,theme(colors.primary.DEFAULT)_360deg)] animate-spin-slow w-[300%] h-[300%] left-[-100%] top-[-100%]" />
+           <div className="relative group rounded-2xl bg-black overflow-hidden border border-white/10 h-[200px]">
+             {/* Animated Download Icons */}
+             <div className="absolute left-4 top-0 h-full w-8">
+               <ArrowDown className="absolute w-6 h-6 text-primary/80 animate-drop-down" />
+               <ArrowDown className="absolute w-6 h-6 text-primary/80 animate-drop-down" style={{ animationDelay: '1s' }} />
              </div>
-             <div className="absolute inset-[2px] bg-black rounded-xl z-10" />
+             <div className="absolute right-4 top-0 h-full w-8">
+               <ArrowDown className="absolute w-6 h-6 text-primary/80 animate-drop-down" style={{ animationDelay: '0.5s' }} />
+               <ArrowDown className="absolute w-6 h-6 text-primary/80 animate-drop-down" style={{ animationDelay: '1.5s' }} />
+             </div>
+
+             <div className="absolute inset-[2px] bg-black/80 rounded-xl z-10 backdrop-blur-sm" />
              
-             <div className="relative z-20 p-8 flex flex-col items-center justify-center text-center">
+             <div className="relative z-20 h-full p-8 flex flex-col items-center justify-center text-center">
                  <div className="mb-4 p-3 bg-white/5 rounded-full group-hover:bg-primary/20 transition-colors">
                     <Zap className="w-8 h-8 text-primary" />
                  </div>
@@ -51,14 +57,20 @@ export default function Packages() {
            </div>
 
            {/* Upload Card */}
-           <div className="relative group rounded-2xl bg-black overflow-hidden">
-             {/* Animated Border */}
-             <div className="absolute inset-0 opacity-75">
-                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,theme(colors.primary.DEFAULT)_360deg)] animate-spin-slow w-[300%] h-[300%] left-[-100%] top-[-100%]" />
+           <div className="relative group rounded-2xl bg-black overflow-hidden border border-white/10 h-[200px]">
+             {/* Animated Upload Icons */}
+             <div className="absolute left-4 top-0 h-full w-8">
+               <ArrowUp className="absolute w-6 h-6 text-primary/80 animate-rise-up" />
+               <ArrowUp className="absolute w-6 h-6 text-primary/80 animate-rise-up" style={{ animationDelay: '1s' }} />
              </div>
-             <div className="absolute inset-[2px] bg-black rounded-xl z-10" />
+             <div className="absolute right-4 top-0 h-full w-8">
+               <ArrowUp className="absolute w-6 h-6 text-primary/80 animate-rise-up" style={{ animationDelay: '0.5s' }} />
+               <ArrowUp className="absolute w-6 h-6 text-primary/80 animate-rise-up" style={{ animationDelay: '1.5s' }} />
+             </div>
+
+             <div className="absolute inset-[2px] bg-black/80 rounded-xl z-10 backdrop-blur-sm" />
              
-             <div className="relative z-20 p-8 flex flex-col items-center justify-center text-center">
+             <div className="relative z-20 h-full p-8 flex flex-col items-center justify-center text-center">
                  <div className="mb-4 p-3 bg-white/5 rounded-full group-hover:bg-primary/20 transition-colors">
                     <Globe className="w-8 h-8 text-primary" />
                  </div>
