@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logoUrl from "../assets/logo.png";
+import { QuoteModal } from "@/components/quote-modal";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,12 +56,14 @@ export default function Navbar() {
               {link.name}
             </button>
           ))}
-          <Button 
-            onClick={() => scrollToSection('#contact')}
-            className="bg-primary text-black hover:bg-primary/90 font-bold"
-          >
-            HEMEN BAŞLA
-          </Button>
+          
+          <QuoteModal 
+            trigger={
+              <Button className="bg-primary text-black hover:bg-primary/90 font-bold">
+                HEMEN BAŞLA
+              </Button>
+            }
+          />
         </div>
 
         {/* Mobile Toggle */}
@@ -84,12 +87,13 @@ export default function Navbar() {
               {link.name}
             </button>
           ))}
-          <Button 
-            onClick={() => scrollToSection('#contact')}
-            className="w-full bg-primary text-black hover:bg-primary/90 font-bold"
-          >
-            HEMEN BAŞLA
-          </Button>
+          <QuoteModal 
+            trigger={
+              <Button className="w-full bg-primary text-black hover:bg-primary/90 font-bold">
+                HEMEN BAŞLA
+              </Button>
+            }
+          />
         </div>
       )}
     </nav>

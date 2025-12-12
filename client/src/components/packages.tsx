@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Zap, Globe, Shield, ArrowDown, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { QuoteModal } from "@/components/quote-modal";
 
 export default function Packages() {
   const tiers = [
@@ -35,7 +36,7 @@ export default function Packages() {
            <div className="relative group rounded-2xl bg-black overflow-hidden border border-white/10 h-[200px]">
              <div className="absolute inset-[2px] bg-black/80 rounded-xl z-10 backdrop-blur-sm" />
              
-             {/* Animated Download Icons */}
+             {/* Animated Download Icons - Z-index 20 to be above background */}
              <div className="absolute left-6 top-0 h-full w-8 z-20 pointer-events-none overflow-hidden">
                <div className="animate-drop-down absolute left-0 w-6 h-6 flex items-center justify-center">
                   <ArrowDown className="w-full h-full text-primary opacity-80" />
@@ -162,16 +163,21 @@ export default function Packages() {
                 </CardContent>
                 
                 <CardFooter className="pt-6 pb-8 px-6">
-                  <Button 
-                    variant={tier.recommended ? "default" : "outline"} 
-                    className={`w-full font-bold h-10 transition-all duration-300
-                      ${tier.recommended 
-                        ? 'bg-primary text-black hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(255,222,89,0.4)]' 
-                        : 'border-white/20 text-white hover:bg-white/10 hover:border-white/40'
-                      }`}
-                  >
-                    Hemen Başvur
-                  </Button>
+                  <QuoteModal 
+                    defaultService="data"
+                    trigger={
+                      <Button 
+                        variant={tier.recommended ? "default" : "outline"} 
+                        className={`w-full font-bold h-10 transition-all duration-300
+                          ${tier.recommended 
+                            ? 'bg-primary text-black hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(255,222,89,0.4)]' 
+                            : 'border-white/20 text-white hover:bg-white/10 hover:border-white/40'
+                          }`}
+                      >
+                        Hemen Başvur
+                      </Button>
+                    }
+                  />
                 </CardFooter>
               </Card>
             </motion.div>
