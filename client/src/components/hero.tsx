@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import heroVideo from "@assets/generated_videos/cinematic_earth_and_satellites_in_space.mp4";
+import heroVideo from "@assets/generated_videos/modern_cargo_ship_at_night_with_satellite_connection.mp4";
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -12,7 +12,7 @@ export default function Hero() {
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/60 z-10" /> {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50 z-10" /> {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
         <video
           src={heroVideo}
@@ -32,15 +32,15 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-primary font-bold tracking-[0.2em] text-sm md:text-base mb-4 uppercase">
-            Next Gen Maritime Connectivity
+            Yeni Nesil Denizcilik Bağlantısı
           </h2>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight font-display">
-            GLOBAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400 text-glow">CONNECTIVITY</span>
+            KÜRESEL <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400 text-glow">BAĞLANTI</span>
             <br />
-            SECURED.
+            GÜVENDE.
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg md:text-xl mb-10 font-light">
-            Providing premium Starlink integration and advanced Firewall services for seamless maritime operations anywhere on Earth.
+            Dünyanın her yerinde denizcilik operasyonları için premium Starlink entegrasyonu ve gelişmiş Firewall hizmetleri.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -49,7 +49,7 @@ export default function Hero() {
               className="bg-primary text-black hover:bg-primary/90 text-lg font-bold px-8 h-12"
               onClick={scrollToServices}
             >
-              OUR SERVICES
+              HİZMETLERİMİZ
             </Button>
             <Button 
               size="lg" 
@@ -57,7 +57,7 @@ export default function Hero() {
               className="border-white/20 text-white hover:bg-white/10 text-lg px-8 h-12 backdrop-blur-sm"
               onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
             >
-              CONTACT US
+              İLETİŞİM
             </Button>
           </div>
         </motion.div>
