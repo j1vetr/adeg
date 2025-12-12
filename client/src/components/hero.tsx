@@ -14,11 +14,11 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/50 z-10" /> {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
         
-        {/* YouTube Background Iframe */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] opacity-80">
+        {/* YouTube Background Iframe - Optimized for cover without excessive zoom */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.77vh] h-[56.25vw] min-w-full min-h-full">
           <iframe
-            className="w-full h-full object-cover"
-            src="https://www.youtube.com/embed/WTFTOZUNQZc?autoplay=1&mute=1&controls=0&loop=1&playlist=WTFTOZUNQZc&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1"
+            className="w-full h-full object-cover opacity-80"
+            src="https://www.youtube.com/embed/WTFTOZUNQZc?autoplay=1&mute=1&controls=0&loop=1&playlist=WTFTOZUNQZc&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&vq=hd1080"
             allow="autoplay; encrypted-media"
             title="Starlink Background Video"
             style={{ pointerEvents: "none" }}
