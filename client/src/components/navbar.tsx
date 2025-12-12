@@ -41,7 +41,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <img src={logoUrl} alt="Adegloba Space" className="h-10 w-auto" />
+          <img src={logoUrl} alt="Adegloba Space" className="h-16 w-auto" />
         </div>
 
         {/* Desktop Nav */}
