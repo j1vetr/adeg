@@ -34,22 +34,21 @@
   
   --radius: 0.5rem;
   
-  --animate-spin-slow: spin 3s linear infinite;
-  --animate-drop-down: move-vertical-down 2s linear infinite;
-  --animate-rise-up: move-vertical-up 2s linear infinite;
+  --animate-drop-down: move-vertical-down 3s linear infinite;
+  --animate-rise-up: move-vertical-up 3s linear infinite;
 
   @keyframes move-vertical-down {
-    0% { top: -10%; opacity: 0; }
+    0% { transform: translateY(-100%); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }
-    100% { top: 110%; opacity: 0; }
+    100% { transform: translateY(400%); opacity: 0; }
   }
 
   @keyframes move-vertical-up {
-    0% { bottom: -10%; opacity: 0; }
+    0% { transform: translateY(100%); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }
-    100% { bottom: 110%; opacity: 0; }
+    100% { transform: translateY(-400%); opacity: 0; }
   }
 }
 

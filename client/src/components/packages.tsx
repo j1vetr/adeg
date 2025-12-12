@@ -29,23 +29,37 @@ export default function Packages() {
           </p>
         </div>
 
-        {/* Speed Specs Banner - Redesigned with animated directional icons */}
+        {/* Speed Specs Banner */}
         <div className="max-w-4xl mx-auto mb-20 grid md:grid-cols-2 gap-8">
            {/* Download Card */}
            <div className="relative group rounded-2xl bg-black overflow-hidden border border-white/10 h-[200px]">
-             {/* Animated Download Icons */}
-             <div className="absolute left-4 top-0 h-full w-8">
-               <ArrowDown className="absolute w-6 h-6 text-primary/80 animate-drop-down" />
-               <ArrowDown className="absolute w-6 h-6 text-primary/80 animate-drop-down" style={{ animationDelay: '1s' }} />
-             </div>
-             <div className="absolute right-4 top-0 h-full w-8">
-               <ArrowDown className="absolute w-6 h-6 text-primary/80 animate-drop-down" style={{ animationDelay: '0.5s' }} />
-               <ArrowDown className="absolute w-6 h-6 text-primary/80 animate-drop-down" style={{ animationDelay: '1.5s' }} />
-             </div>
-
              <div className="absolute inset-[2px] bg-black/80 rounded-xl z-10 backdrop-blur-sm" />
              
-             <div className="relative z-20 h-full p-8 flex flex-col items-center justify-center text-center">
+             {/* Animated Download Icons - Z-index 20 to be above background */}
+             <div className="absolute left-6 top-0 h-full w-8 z-20 pointer-events-none overflow-hidden">
+               <div className="animate-drop-down absolute -top-8 left-0">
+                  <ArrowDown className="w-6 h-6 text-primary opacity-80" />
+               </div>
+               <div className="animate-drop-down absolute -top-8 left-0" style={{ animationDelay: '1s' }}>
+                  <ArrowDown className="w-6 h-6 text-primary opacity-60" />
+               </div>
+               <div className="animate-drop-down absolute -top-8 left-0" style={{ animationDelay: '2s' }}>
+                  <ArrowDown className="w-6 h-6 text-primary opacity-40" />
+               </div>
+             </div>
+             <div className="absolute right-6 top-0 h-full w-8 z-20 pointer-events-none overflow-hidden">
+               <div className="animate-drop-down absolute -top-8 left-0" style={{ animationDelay: '0.5s' }}>
+                  <ArrowDown className="w-6 h-6 text-primary opacity-80" />
+               </div>
+               <div className="animate-drop-down absolute -top-8 left-0" style={{ animationDelay: '1.5s' }}>
+                  <ArrowDown className="w-6 h-6 text-primary opacity-60" />
+               </div>
+               <div className="animate-drop-down absolute -top-8 left-0" style={{ animationDelay: '2.5s' }}>
+                  <ArrowDown className="w-6 h-6 text-primary opacity-40" />
+               </div>
+             </div>
+             
+             <div className="relative z-30 h-full p-8 flex flex-col items-center justify-center text-center">
                  <div className="mb-4 p-3 bg-white/5 rounded-full group-hover:bg-primary/20 transition-colors">
                     <Zap className="w-8 h-8 text-primary" />
                  </div>
@@ -58,19 +72,33 @@ export default function Packages() {
 
            {/* Upload Card */}
            <div className="relative group rounded-2xl bg-black overflow-hidden border border-white/10 h-[200px]">
-             {/* Animated Upload Icons */}
-             <div className="absolute left-4 top-0 h-full w-8">
-               <ArrowUp className="absolute w-6 h-6 text-primary/80 animate-rise-up" />
-               <ArrowUp className="absolute w-6 h-6 text-primary/80 animate-rise-up" style={{ animationDelay: '1s' }} />
-             </div>
-             <div className="absolute right-4 top-0 h-full w-8">
-               <ArrowUp className="absolute w-6 h-6 text-primary/80 animate-rise-up" style={{ animationDelay: '0.5s' }} />
-               <ArrowUp className="absolute w-6 h-6 text-primary/80 animate-rise-up" style={{ animationDelay: '1.5s' }} />
-             </div>
-
              <div className="absolute inset-[2px] bg-black/80 rounded-xl z-10 backdrop-blur-sm" />
+
+             {/* Animated Upload Icons - Z-index 20 */}
+             <div className="absolute left-6 top-0 h-full w-8 z-20 pointer-events-none overflow-hidden">
+               <div className="animate-rise-up absolute -bottom-8 left-0">
+                  <ArrowUp className="w-6 h-6 text-primary opacity-80" />
+               </div>
+               <div className="animate-rise-up absolute -bottom-8 left-0" style={{ animationDelay: '1s' }}>
+                  <ArrowUp className="w-6 h-6 text-primary opacity-60" />
+               </div>
+               <div className="animate-rise-up absolute -bottom-8 left-0" style={{ animationDelay: '2s' }}>
+                  <ArrowUp className="w-6 h-6 text-primary opacity-40" />
+               </div>
+             </div>
+             <div className="absolute right-6 top-0 h-full w-8 z-20 pointer-events-none overflow-hidden">
+               <div className="animate-rise-up absolute -bottom-8 left-0" style={{ animationDelay: '0.5s' }}>
+                  <ArrowUp className="w-6 h-6 text-primary opacity-80" />
+               </div>
+               <div className="animate-rise-up absolute -bottom-8 left-0" style={{ animationDelay: '1.5s' }}>
+                  <ArrowUp className="w-6 h-6 text-primary opacity-60" />
+               </div>
+               <div className="animate-rise-up absolute -bottom-8 left-0" style={{ animationDelay: '2.5s' }}>
+                  <ArrowUp className="w-6 h-6 text-primary opacity-40" />
+               </div>
+             </div>
              
-             <div className="relative z-20 h-full p-8 flex flex-col items-center justify-center text-center">
+             <div className="relative z-30 h-full p-8 flex flex-col items-center justify-center text-center">
                  <div className="mb-4 p-3 bg-white/5 rounded-full group-hover:bg-primary/20 transition-colors">
                     <Globe className="w-8 h-8 text-primary" />
                  </div>
