@@ -1,5 +1,6 @@
 import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
+import MaritimeService from "@/components/maritime-service";
 import Services from "@/components/services";
 import Packages from "@/components/packages";
 import AppShowcase from "@/components/app-showcase";
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <MaritimeService />
         <Services />
         <Packages />
         <AppShowcase />
