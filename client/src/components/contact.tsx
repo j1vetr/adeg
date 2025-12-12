@@ -1,68 +1,157 @@
-import { MapPin, Mail, Phone, Clock } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { MapPin, Mail, Phone, Clock, ArrowRight, Headphones } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
+import { QuoteModal } from "@/components/quote-modal";
 
 export default function Contact() {
   const { t } = useTranslation();
 
+  const contactItems = [
+    {
+      icon: MapPin,
+      title: t('contact.office'),
+      content: "71-75 Shelton Street\nLondon, WC2H 9JQ\nUnited Kingdom",
+      link: "https://maps.google.com/?q=71-75+Shelton+Street+London",
+      isExternal: true,
+    },
+    {
+      icon: Mail,
+      title: t('contact.email'),
+      content: "starlink@adegloba.space",
+      link: "mailto:starlink@adegloba.space",
+      isExternal: false,
+    },
+    {
+      icon: Phone,
+      title: t('contact.phone'),
+      content: "+44 7440 225 375",
+      link: "tel:+447440225375",
+      isExternal: false,
+    },
+  ];
+
   return (
-    <section id="contact" className="py-24 bg-background relative border-t border-white/5">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-primary font-bold tracking-[0.2em] mb-2 uppercase">{t('contact.title')}</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-white font-display">{t('contact.subtitle')}</h3>
-        </div>
+    <section id="contact" className="py-32 bg-black relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px]" />
+      </div>
+      
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `linear-gradient(rgba(255,222,89,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,222,89,0.3) 1px, transparent 1px)`,
+        backgroundSize: '50px 50px'
+      }} />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card className="bg-card/30 border-white/10 backdrop-blur-sm text-center hover:bg-card/50 transition-colors">
-            <CardContent className="pt-8 pb-8 flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <MapPin className="text-primary w-6 h-6" />
-              </div>
-              <h4 className="text-white font-bold mb-2">{t('contact.office')}</h4>
-              <p className="text-gray-400 text-sm">
-                71 - 75 Shelton Street<br />
-                London, WC2H 9JQ<br />
-                United Kingdom
-              </p>
-            </CardContent>
-          </Card>
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
+        <motion.div 
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider mb-6">
+            <Headphones className="w-4 h-4" />
+            <span>{t('contact.support')}</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-white font-display mb-4">
+            {t('contact.title')}
+          </h2>
+          <p className="text-gray-400 text-lg max-w-xl mx-auto">
+            {t('contact.supportDesc')}
+          </p>
+        </motion.div>
 
-          <Card className="bg-card/30 border-white/10 backdrop-blur-sm text-center hover:bg-card/50 transition-colors">
-            <CardContent className="pt-8 pb-8 flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <Mail className="text-primary w-6 h-6" />
-              </div>
-              <h4 className="text-white font-bold mb-2">{t('contact.email')}</h4>
-              <a href="mailto:starlink@adegloba.space" className="text-gray-400 text-sm hover:text-primary transition-colors">
-                starlink@adegloba.space
-              </a>
-            </CardContent>
-          </Card>
+        {/* Main Content */}
+        <div className="grid lg:grid-cols-5 gap-8 items-stretch">
+          {/* Contact Cards */}
+          <div className="lg:col-span-3 grid md:grid-cols-3 gap-4">
+            {contactItems.map((item, index) => (
+              <motion.a
+                key={index}
+                href={item.link}
+                target={item.isExternal ? "_blank" : undefined}
+                rel={item.isExternal ? "noopener noreferrer" : undefined}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-500 flex flex-col"
+              >
+                {/* Hover Glow */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                {/* Icon */}
+                <div className="relative mb-6">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(255,222,89,0.2)] transition-all duration-300">
+                    <item.icon className="w-6 h-6 text-primary" />
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="relative flex-grow">
+                  <h4 className="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h4>
+                  <p className="text-gray-400 text-sm whitespace-pre-line leading-relaxed">
+                    {item.content}
+                  </p>
+                </div>
 
-          <Card className="bg-card/30 border-white/10 backdrop-blur-sm text-center hover:bg-card/50 transition-colors">
-            <CardContent className="pt-8 pb-8 flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <Phone className="text-primary w-6 h-6" />
-              </div>
-              <h4 className="text-white font-bold mb-2">{t('contact.phone')}</h4>
-              <a href="tel:+447440225375" className="text-gray-400 text-sm hover:text-primary transition-colors">
-                +44 7440 225 375
-              </a>
-            </CardContent>
-          </Card>
+                {/* Arrow */}
+                <div className="relative mt-4 flex items-center text-primary/50 group-hover:text-primary text-sm font-medium transition-colors">
+                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                </div>
+              </motion.a>
+            ))}
+          </div>
 
-          <Card className="bg-card/30 border-white/10 backdrop-blur-sm text-center hover:bg-card/50 transition-colors">
-             <CardContent className="pt-8 pb-8 flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <Clock className="text-primary w-6 h-6" />
+          {/* CTA Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="lg:col-span-2 relative"
+          >
+            <div className="h-full p-8 md:p-10 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 flex flex-col justify-center relative overflow-hidden">
+              {/* Background Pattern */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-[60px] pointer-events-none" />
+              
+              {/* 24/7 Badge */}
+              <div className="relative inline-flex items-center gap-2 mb-6">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-green-400 text-xs font-bold uppercase tracking-wider">7/24 Online</span>
+                </div>
               </div>
-              <h4 className="text-white font-bold mb-2">{t('contact.support')}</h4>
-              <p className="text-gray-400 text-sm whitespace-pre-line">
-                {t('contact.supportDesc')}
-              </p>
-            </CardContent>
-          </Card>
+
+              <div className="relative">
+                <div className="flex items-center gap-3 mb-4">
+                  <Clock className="w-8 h-8 text-primary" />
+                  <h3 className="text-2xl md:text-3xl font-bold text-white font-display">
+                    {t('contact.support')}
+                  </h3>
+                </div>
+                
+                <p className="text-gray-300 mb-8 leading-relaxed">
+                  Denizcilik operasyonlarınız için kesintisiz destek. Teknik sorunlar, kurulum ve paket yönetimi konularında yanınızdayız.
+                </p>
+
+                <QuoteModal 
+                  trigger={
+                    <Button className="w-full bg-primary text-black hover:bg-primary/90 font-bold h-14 text-base shadow-[0_0_30px_rgba(255,222,89,0.3)] hover:shadow-[0_0_40px_rgba(255,222,89,0.5)] transition-all duration-300">
+                      {t('nav.getStarted')}
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  }
+                />
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
