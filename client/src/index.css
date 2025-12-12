@@ -33,6 +33,8 @@
   --font-display: 'Poppins', sans-serif;
   
   --radius: 0.5rem;
+  
+  --animate-spin-slow: spin 3s linear infinite;
 }
 
 :root {

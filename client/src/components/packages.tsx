@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Check, Zap, Globe, Shield } from "lucide-react";
+import { Zap, Globe, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Packages() {
   const tiers = [
-    { size: "50 GB", recommended: false, features: ["Temel Kullanım", "E-posta & Mesajlaşma"] },
-    { size: "100 GB", recommended: false, features: ["Standart Kullanım", "Web Gezinme", "Sesli Görüşme"] },
-    { size: "250 GB", recommended: true, features: ["Aktif Kullanım", "Video Konferans", "HD Video Akışı"] },
-    { size: "500 GB", recommended: false, features: ["Yoğun Kullanım", "4K Video Akışı", "Büyük Dosya Transferi"] },
-    { size: "1 TB", recommended: false, features: ["Profesyonel Kullanım", "Tüm Mürettebat İçin", "Sınırsız Olanaklar"] },
+    { size: "50 GB", recommended: false },
+    { size: "100 GB", recommended: false },
+    { size: "250 GB", recommended: true },
+    { size: "500 GB", recommended: false },
+    { size: "1 TB", recommended: false },
   ];
 
   return (
@@ -29,31 +29,45 @@ export default function Packages() {
           </p>
         </div>
 
-        {/* Speed Specs Banner - Redesigned */}
-        <div className="max-w-4xl mx-auto mb-20">
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-1">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5" />
-            <div className="relative grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
-              <div className="p-8 flex flex-col items-center justify-center text-center group">
+        {/* Speed Specs Banner - Redesigned with animated border */}
+        <div className="max-w-4xl mx-auto mb-20 grid md:grid-cols-2 gap-8">
+           {/* Download Card */}
+           <div className="relative group rounded-2xl bg-black overflow-hidden">
+             {/* Animated Border */}
+             <div className="absolute inset-0 opacity-75">
+                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,theme(colors.primary.DEFAULT)_360deg)] animate-spin-slow w-[300%] h-[300%] left-[-100%] top-[-100%]" />
+             </div>
+             <div className="absolute inset-[2px] bg-black rounded-xl z-10" />
+             
+             <div className="relative z-20 p-8 flex flex-col items-center justify-center text-center">
                  <div className="mb-4 p-3 bg-white/5 rounded-full group-hover:bg-primary/20 transition-colors">
-                    <Zap className="w-6 h-6 text-primary" />
+                    <Zap className="w-8 h-8 text-primary" />
                  </div>
                  <div className="text-gray-400 text-sm uppercase tracking-wider font-medium mb-1">Download Hızı</div>
-                 <div className="text-5xl font-bold text-white font-display tracking-tight group-hover:scale-110 transition-transform duration-300">
+                 <div className="text-6xl font-bold text-white font-display tracking-tight group-hover:scale-105 transition-transform duration-300">
                    325 <span className="text-2xl text-primary/80 font-sans font-normal">Mbps</span>
                  </div>
-              </div>
-              <div className="p-8 flex flex-col items-center justify-center text-center group">
+             </div>
+           </div>
+
+           {/* Upload Card */}
+           <div className="relative group rounded-2xl bg-black overflow-hidden">
+             {/* Animated Border */}
+             <div className="absolute inset-0 opacity-75">
+                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,theme(colors.primary.DEFAULT)_360deg)] animate-spin-slow w-[300%] h-[300%] left-[-100%] top-[-100%]" />
+             </div>
+             <div className="absolute inset-[2px] bg-black rounded-xl z-10" />
+             
+             <div className="relative z-20 p-8 flex flex-col items-center justify-center text-center">
                  <div className="mb-4 p-3 bg-white/5 rounded-full group-hover:bg-primary/20 transition-colors">
-                    <Globe className="w-6 h-6 text-primary" />
+                    <Globe className="w-8 h-8 text-primary" />
                  </div>
                  <div className="text-gray-400 text-sm uppercase tracking-wider font-medium mb-1">Upload Hızı</div>
-                 <div className="text-5xl font-bold text-white font-display tracking-tight group-hover:scale-110 transition-transform duration-300">
+                 <div className="text-6xl font-bold text-white font-display tracking-tight group-hover:scale-105 transition-transform duration-300">
                    25 <span className="text-2xl text-primary/80 font-sans font-normal">Mbps</span>
                  </div>
-              </div>
-            </div>
-          </div>
+             </div>
+           </div>
         </div>
 
         {/* Pricing Cards */}
@@ -79,34 +93,32 @@ export default function Packages() {
                   <div className="absolute top-0 inset-x-0 h-1 bg-primary shadow-[0_0_20px_rgba(255,222,89,0.5)]" />
                 )}
                 
-                <CardHeader className="text-center pt-8 pb-6 relative">
+                <CardHeader className="text-center pt-10 pb-6 relative">
                   {tier.recommended && (
                     <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider text-black bg-primary px-2 py-0.5 rounded-full">
                       Popüler
                     </span>
                   )}
-                  <CardTitle className={`text-3xl font-bold font-display tracking-tight ${tier.recommended ? 'text-primary text-glow' : 'text-white'}`}>
+                  <CardTitle className={`text-4xl font-bold font-display tracking-tight ${tier.recommended ? 'text-primary text-glow' : 'text-white'}`}>
                     {tier.size}
                   </CardTitle>
                 </CardHeader>
                 
-                <CardContent className="flex-grow space-y-4 px-6">
-                  {tier.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-3 text-sm text-gray-300">
-                      <div className={`w-1.5 h-1.5 rounded-full ${tier.recommended ? 'bg-primary' : 'bg-gray-500 group-hover:bg-primary transition-colors'}`} />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                  <div className="pt-4 border-t border-white/5 space-y-3">
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <Shield className="w-3 h-3" />
-                      <span>Düşük Gecikme</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <Globe className="w-3 h-3" />
-                      <span>Global Roaming</span>
-                    </div>
-                  </div>
+                <CardContent className="flex-grow flex flex-col items-center justify-center space-y-4 px-6 text-center">
+                   <p className="text-gray-400 text-sm">Starlink Maritime<br/>Yüksek Hızlı İnternet</p>
+                   
+                   <div className="w-full h-px bg-white/5 my-4" />
+                   
+                   <div className="space-y-2">
+                     <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
+                        <Shield className="w-3 h-3 text-primary" />
+                        <span>Güvenli Bağlantı</span>
+                     </div>
+                     <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
+                        <Globe className="w-3 h-3 text-primary" />
+                        <span>Global Kapsama</span>
+                     </div>
+                   </div>
                 </CardContent>
                 
                 <CardFooter className="pt-6 pb-8 px-6">
