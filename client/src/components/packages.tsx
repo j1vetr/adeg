@@ -11,9 +11,9 @@ export default function Packages() {
   const tiers = [
     { size: "50 GB", recommended: false, features: [t('packages.features.basic'), t('packages.features.email')] },
     { size: "100 GB", recommended: false, features: [t('packages.features.standard'), t('packages.features.web')] },
-    { size: "250 GB", recommended: true, features: [t('packages.features.active'), t('packages.features.videoConf')] },
+    { size: "250 GB", recommended: false, features: [t('packages.features.active'), t('packages.features.videoConf')] },
     { size: "500 GB", recommended: false, features: [t('packages.features.heavy'), t('packages.features.k4Video')] },
-    { size: "1 TB", recommended: false, features: [t('packages.features.pro'), t('packages.features.crew')] },
+    { size: "1 TB", recommended: true, features: [t('packages.features.pro'), t('packages.features.crew')] },
   ];
 
   return (
