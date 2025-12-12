@@ -5,7 +5,7 @@ import starlinkImg from "@assets/lax1_1765553108513.jpg";
 
 export default function MaritimeService() {
   return (
-    <section className="py-24 bg-black/40 relative border-b border-white/5">
+    <section id="maritime" className="py-24 bg-black/40 relative border-b border-white/5">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           

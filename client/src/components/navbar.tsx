@@ -20,7 +20,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Ana Sayfa", href: "#" },
-    { name: "Hizmetler", href: "#services" },
+    { name: "Hizmetler", href: "#maritime" },
+    { name: "Neden Biz", href: "#services" },
     { name: "ADS Sistemi", href: "#app" },
     { name: "İletişim", href: "#contact" },
   ];
