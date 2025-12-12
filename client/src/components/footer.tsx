@@ -62,11 +62,21 @@ export default function Footer() {
         
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-gray-500">
           <div>
-            &copy; {new Date().getFullYear()} {t('footer.rights')} <span className="mx-2 text-primary">|</span> {t('footer.madeBy').split('TOOV')[0]}<a href="https://toov.com.tr" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors font-semibold">TOOV</a>{t('footer.madeBy').split('TOOV')[1]}
+            &copy; {new Date().getFullYear()} {t('footer.rights')}
           </div>
-          <div className="flex gap-6">
-             <a href="#" className="hover:text-primary transition-colors">{t('footer.privacy')}</a>
-             <a href="#" className="hover:text-primary transition-colors">{t('footer.terms')}</a>
+          <div className="flex items-center gap-2">
+            <span className="text-gray-600">Designed & Developed by</span>
+            <a 
+              href="https://toov.com.tr" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-primary/30 hover:bg-primary/10 transition-all duration-300 group"
+            >
+              <span className="text-primary font-bold tracking-wide">TOOV</span>
+              <svg className="w-3 h-3 text-primary/50 group-hover:text-primary group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
