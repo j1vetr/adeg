@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Map, Wifi, Anchor } from "lucide-react";
-import starlinkImg from "@assets/stock_images/starlink_antenna_on__8a8fb97e.jpg";
+import starlinkImg from "@assets/lax1_1765553108513.jpg";
 
 export default function MaritimeService() {
   return (
@@ -73,12 +73,12 @@ export default function MaritimeService() {
              transition={{ duration: 0.8 }}
              className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl h-[600px]">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay z-10 pointer-events-none" />
               <img 
                 src={starlinkImg} 
                 alt="Starlink Maritime Antenna" 
-                className="w-full h-full object-cover min-h-[400px] hover:scale-105 transition-transform duration-700" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" 
               />
               
               {/* Floating Badge */}
