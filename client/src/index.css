@@ -29,15 +29,15 @@
   --color-chart-4: hsl(var(--chart-4));
   --color-chart-5: hsl(var(--chart-5));
   
-  --font-sans: 'Rajdhani', sans-serif;
-  --font-display: 'Orbitron', sans-serif;
+  --font-sans: 'Poppins', sans-serif;
+  --font-display: 'Poppins', sans-serif;
   
   --radius: 0.5rem;
 }
 
 :root {
   /* Dark theme by default as requested */
-  --background: 222 47% 11%;
+  --background: 222 47% 11%; /* Keep dark background */
   --foreground: 210 40% 98%;
 
   --card: 222 47% 11%;
@@ -46,8 +46,8 @@
   --popover: 222 47% 11%;
   --popover-foreground: 210 40% 98%;
 
-  --primary: 217 91% 60%;
-  --primary-foreground: 222 47% 11%;
+  --primary: 48 100% 67%; /* #ffde59 Yellow */
+  --primary-foreground: 0 0% 0%; /* Black text on yellow */
 
   --secondary: 217 19% 27%;
   --secondary-foreground: 210 40% 98%;
@@ -63,9 +63,9 @@
 
   --border: 217 19% 27%;
   --input: 217 19% 27%;
-  --ring: 224 76% 48%;
+  --ring: 48 100% 67%;
   
-  --chart-1: 220 70% 50%;
+  --chart-1: 48 100% 67%;
   --chart-2: 160 60% 45%;
   --chart-3: 30 80% 55%;
   --chart-4: 280 65% 60%;
@@ -82,8 +82,8 @@
   --popover: 222 47% 11%;
   --popover-foreground: 210 40% 98%;
 
-  --primary: 217 91% 60%;
-  --primary-foreground: 222 47% 11%;
+  --primary: 48 100% 67%; /* #ffde59 Yellow */
+  --primary-foreground: 0 0% 0%;
 
   --secondary: 217 19% 27%;
   --secondary-foreground: 210 40% 98%;
@@ -99,7 +99,7 @@
 
   --border: 217 19% 27%;
   --input: 217 19% 27%;
-  --ring: 224 76% 48%;
+  --ring: 48 100% 67%;
 }
 
 @layer base {
@@ -119,6 +119,6 @@
     @apply bg-black/40 backdrop-blur-md border border-white/10;
   }
   .text-glow {
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+    text-shadow: 0 0 20px rgba(255, 222, 89, 0.5); /* Updated to yellow glow */
   }
 }

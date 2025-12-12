@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import heroVideo from "@assets/generated_videos/modern_cargo_ship_at_night_with_satellite_connection.mp4";
+import heroVideo from "@assets/generated_videos/earth_rotating_from_space_with_network_lines.mp4";
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -35,7 +35,7 @@ export default function Hero() {
             Yeni Nesil Denizcilik Bağlantısı
           </h2>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight font-display">
-            KÜRESEL <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400 text-glow">BAĞLANTI</span>
+            KÜRESEL <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200 text-glow">BAĞLANTI</span>
             <br />
             GÜVENDE.
           </h1>

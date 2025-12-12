@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import logoUrl from "../assets/logo.png";
 
 export default function Footer() {
   return (
@@ -6,7 +7,7 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">
-             <h3 className="text-2xl font-bold text-white font-display mb-2">ADEGLOBA<span className="text-primary">SPACE</span></h3>
+             <img src={logoUrl} alt="Adegloba Space" className="h-12 w-auto mb-4" />
              <p className="text-gray-500 text-sm">Connecting the world, securing your data.</p>
           </div>
           

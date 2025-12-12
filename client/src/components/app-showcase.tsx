@@ -55,8 +55,8 @@ export default function AppShowcase() {
           >
             <Tabs defaultValue="desktop" className="w-full">
               <TabsList className="grid w-full grid-cols-2 bg-white/5 border border-white/10 mb-8">
-                <TabsTrigger value="desktop" className="data-[state=active]:bg-primary data-[state=active]:text-black">Masaüstü</TabsTrigger>
-                <TabsTrigger value="mobile" className="data-[state=active]:bg-primary data-[state=active]:text-black">Mobil</TabsTrigger>
+                <TabsTrigger value="desktop" className="data-[state=active]:bg-primary data-[state=active]:text-black font-bold">Masaüstü</TabsTrigger>
+                <TabsTrigger value="mobile" className="data-[state=active]:bg-primary data-[state=active]:text-black font-bold">Mobil</TabsTrigger>
               </TabsList>
               
               <TabsContent value="desktop" className="relative mt-0">
@@ -67,8 +67,9 @@ export default function AppShowcase() {
               </TabsContent>
               
               <TabsContent value="mobile" className="flex justify-center mt-0">
-                <div className="relative rounded-[2.5rem] overflow-hidden border-8 border-gray-900 shadow-2xl w-[300px] h-[600px] group">
-                  <img src={mobileImg} alt="ADS Mobile App" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                {/* Updated Mobile Container - Removed fixed height, uses aspect ratio and object-contain to fit the full image */}
+                <div className="relative rounded-[2.5rem] overflow-hidden border-8 border-gray-900 shadow-2xl w-[320px] bg-black group">
+                  <img src={mobileImg} alt="ADS Mobile App" className="w-full h-auto object-contain" />
                 </div>
               </TabsContent>
             </Tabs>
