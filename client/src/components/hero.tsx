@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import heroVideo from "@assets/videoplayback_1765550131157.mp4";
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -11,17 +10,20 @@ export default function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
       {/* Video Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-black/50 z-10" /> {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
-        <video
-          src={heroVideo}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        />
+        
+        {/* YouTube Background Iframe */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] opacity-80">
+          <iframe
+            className="w-full h-full object-cover"
+            src="https://www.youtube.com/embed/WTFTOZUNQZc?autoplay=1&mute=1&controls=0&loop=1&playlist=WTFTOZUNQZc&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1"
+            allow="autoplay; encrypted-media"
+            title="Starlink Background Video"
+            style={{ pointerEvents: "none" }}
+          />
+        </div>
       </div>
 
       {/* Content */}
