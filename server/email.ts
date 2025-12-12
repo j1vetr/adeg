@@ -1,13 +1,21 @@
 import nodemailer from "nodemailer";
-import type { InsertQuote } from "@shared/schema";
+
+interface QuoteData {
+  companyName: string;
+  contactName: string;
+  email: string;
+  phone: string;
+  services: string[];
+  notes?: string;
+}
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || "posta.kumsaati.com.tr",
+  host: process.env.SMTP_HOST,
   port: 587,
   secure: false,
   auth: {
-    user: process.env.SMTP_USER || "no-reply@adegloba.space",
-    pass: process.env.SMTP_PASSWORD || "no-reply@adegloba.space",
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASSWORD,
   },
 });
 
@@ -20,14 +28,14 @@ const serviceLabels: Record<string, { tr: string; en: string }> = {
   network: { tr: "Gemi İçi Network Yönetimi", en: "Onboard Network Management" },
 };
 
-export async function sendQuoteEmails(quote: InsertQuote) {
+export async function sendQuoteEmails(quote: QuoteData) {
   const services = quote.services || [];
   const servicesListTR = services
-    .map((s) => `• ${serviceLabels[s as keyof typeof serviceLabels]?.tr || s}`)
+    .map((s) => `• ${serviceLabels[s]?.tr || s}`)
     .join("\n");
   
   const servicesListEN = services
-    .map((s) => `• ${serviceLabels[s as keyof typeof serviceLabels]?.en || s}`)
+    .map((s) => `• ${serviceLabels[s]?.en || s}`)
     .join("\n");
 
   // Email to customer (Turkish)
@@ -44,7 +52,6 @@ export async function sendQuoteEmails(quote: InsertQuote) {
         .highlight { background-color: #fff9e6; border-left: 4px solid #ffde59; padding: 15px; margin: 20px 0; border-radius: 4px; }
         .footer { background: #000000; color: #999; text-align: center; padding: 20px; font-size: 12px; }
         .footer a { color: #ffde59; text-decoration: none; }
-        .button { display: inline-block; padding: 12px 30px; background: #ffde59; color: #000; text-decoration: none; border-radius: 5px; font-weight: 600; margin: 20px 0; }
       </style>
     </head>
     <body>
@@ -82,7 +89,7 @@ export async function sendQuoteEmails(quote: InsertQuote) {
     </html>
   `;
 
-  // Email to admin (detailed, Turkish + English)
+  // Email to admin (detailed)
   const adminEmailHTML = `
     <!DOCTYPE html>
     <html>
@@ -168,7 +175,7 @@ export async function sendQuoteEmails(quote: InsertQuote) {
     }),
     transporter.sendMail({
       from: `"AdeGloba Space System" <${process.env.SMTP_USER}>`,
-      to: process.env.ADMIN_EMAIL || "starlink@adegloba.space",
+      to: process.env.ADMIN_EMAIL,
       subject: `🔔 Yeni Teklif Talebi - ${quote.companyName}`,
       html: adminEmailHTML,
     }),

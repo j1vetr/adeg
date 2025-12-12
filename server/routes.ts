@@ -1,51 +1,38 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertQuoteSchema } from "@shared/schema";
 import { sendQuoteEmails } from "./email";
+import { z } from "zod";
+
+const quoteSchema = z.object({
+  companyName: z.string().min(1),
+  contactName: z.string().min(1),
+  email: z.string().email(),
+  phone: z.string().min(1),
+  services: z.array(z.string()).default([]),
+  notes: z.string().optional(),
+});
 
 export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // Quote submission endpoint
+  // Quote submission endpoint - just sends emails, no database
   app.post("/api/quotes", async (req, res) => {
     try {
-      // Validate request body
-      const validatedData = insertQuoteSchema.parse(req.body);
+      const validatedData = quoteSchema.parse(req.body);
       
-      // Save to database
-      const quote = await storage.createQuote(validatedData);
-      
-      // Send emails (async, don't wait for completion)
-      sendQuoteEmails(validatedData).catch((error) => {
-        console.error("Failed to send quote emails:", error);
-      });
+      // Send emails
+      await sendQuoteEmails(validatedData);
       
       res.json({ 
         success: true, 
-        message: "Quote request submitted successfully",
-        quoteId: quote.id 
+        message: "Quote request submitted successfully"
       });
     } catch (error) {
-      console.error("Error creating quote:", error);
+      console.error("Error processing quote:", error);
       res.status(400).json({ 
         success: false, 
         message: "Failed to submit quote request" 
-      });
-    }
-  });
-
-  // Get all quotes (admin endpoint - optional)
-  app.get("/api/quotes", async (req, res) => {
-    try {
-      const quotes = await storage.getAllQuotes();
-      res.json(quotes);
-    } catch (error) {
-      console.error("Error fetching quotes:", error);
-      res.status(500).json({ 
-        success: false, 
-        message: "Failed to fetch quotes" 
       });
     }
   });
