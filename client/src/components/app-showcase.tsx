@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import desktopImg from "@assets/masa1_1765548406035.png";
-import mobileImg from "@assets/generated_images/mobile_app_ui.png";
+import mobileImg from "@assets/mobil1_1765548415955.png";
 import { Smartphone, Monitor } from "lucide-react";
 
 export default function AppShowcase() {
