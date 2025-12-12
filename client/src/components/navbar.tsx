@@ -18,10 +18,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "Services", href: "#services" },
-    { name: "ADS System", href: "#app" },
-    { name: "Contact", href: "#contact" },
+    { name: "Ana Sayfa", href: "#" },
+    { name: "Hizmetler", href: "#services" },
+    { name: "ADS Sistemi", href: "#app" },
+    { name: "İletişim", href: "#contact" },
   ];
 
   const scrollToSection = (id: string) => {
@@ -59,7 +59,7 @@ export default function Navbar() {
             onClick={() => scrollToSection('#contact')}
             className="bg-primary text-black hover:bg-primary/90 font-bold"
           >
-            GET STARTED
+            HEMEN BAŞLA
           </Button>
         </div>
 
@@ -88,7 +88,7 @@ export default function Navbar() {
             onClick={() => scrollToSection('#contact')}
             className="w-full bg-primary text-black hover:bg-primary/90 font-bold"
           >
-            GET STARTED
+            HEMEN BAŞLA
           </Button>
         </div>
       )}
