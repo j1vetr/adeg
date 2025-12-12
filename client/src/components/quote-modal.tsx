@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -26,6 +26,7 @@ export function QuoteModal({ trigger, defaultService }: QuoteModalProps) {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const { t } = useTranslation();
+  const formRef = useRef<HTMLFormElement>(null);
 
   const servicesList = [
     { id: "data", label: t('modal.serviceList.data') },
@@ -36,19 +37,59 @@ export function QuoteModal({ trigger, defaultService }: QuoteModalProps) {
     { id: "network", label: t('modal.serviceList.network') },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
-      setOpen(false);
-      toast({
-        title: t('modal.successTitle'),
-        description: t('modal.successDesc'),
+    const formData = new FormData(e.currentTarget);
+    const selectedServices: string[] = [];
+    
+    servicesList.forEach((service) => {
+      if (formData.get(service.id) === "on") {
+        selectedServices.push(service.id);
+      }
+    });
+
+    const quoteData = {
+      companyName: formData.get("company") as string,
+      contactName: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      services: selectedServices,
+      notes: formData.get("message") as string || "",
+    };
+
+    try {
+      const response = await fetch("/api/quotes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(quoteData),
       });
-    }, 1500);
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setOpen(false);
+        formRef.current?.reset();
+        toast({
+          title: t('modal.successTitle'),
+          description: t('modal.successDesc'),
+        });
+      } else {
+        throw new Error(result.message || "Failed to submit quote");
+      }
+    } catch (error) {
+      console.error("Quote submission error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to submit quote request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -64,26 +105,26 @@ export function QuoteModal({ trigger, defaultService }: QuoteModalProps) {
           </DialogDescription>
         </DialogHeader>
         
-        <form onSubmit={handleSubmit} className="grid gap-6 py-4">
+        <form ref={formRef} onSubmit={handleSubmit} className="grid gap-6 py-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="company">{t('modal.company')}</Label>
-              <Input id="company" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
+              <Input name="company" id="company" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="name">{t('modal.name')}</Label>
-              <Input id="name" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
+              <Input name="name" id="name" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
             </div>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="email">{t('modal.email')}</Label>
-              <Input id="email" type="email" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
+              <Input name="email" id="email" type="email" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone">{t('modal.phone')}</Label>
-              <Input id="phone" type="tel" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
+              <Input name="phone" id="phone" type="tel" required placeholder="" className="bg-white/5 border-white/10 focus:border-primary/50 text-white" />
             </div>
           </div>
 
@@ -93,6 +134,7 @@ export function QuoteModal({ trigger, defaultService }: QuoteModalProps) {
               {servicesList.map((service) => (
                 <div key={service.id} className="flex items-center space-x-2">
                   <Checkbox 
+                    name={service.id}
                     id={service.id} 
                     className="border-white/30 data-[state=checked]:bg-primary data-[state=checked]:text-black"
                     defaultChecked={defaultService === service.id} 
@@ -108,6 +150,7 @@ export function QuoteModal({ trigger, defaultService }: QuoteModalProps) {
           <div className="space-y-2">
             <Label htmlFor="message">{t('modal.notes')}</Label>
             <Textarea 
+              name="message"
               id="message" 
               placeholder={t('modal.notesPlaceholder')} 
               className="bg-white/5 border-white/10 focus:border-primary/50 text-white min-h-[80px]" 
