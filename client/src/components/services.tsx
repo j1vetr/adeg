@@ -22,7 +22,7 @@ export default function Services() {
     {
       icon: <DollarSign className="w-10 h-10 text-primary" />,
       title: "Bütçe Kontrolü",
-      description: "Düşük maliyetli anten, 5 TB'ye kadar paket seçeneği."
+      description: "Düşük maliyetli anten, 1 TB'ye kadar paket seçeneği."
     },
     {
       icon: <Package className="w-10 h-10 text-primary" />,
