@@ -67,8 +67,8 @@ export default function Contact() {
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-5 gap-8 items-stretch">
-          {/* Contact Cards - Compact */}
-          <div className="lg:col-span-3 flex flex-col gap-3">
+          {/* Contact Cards - Compact but aligned with CTA */}
+          <div className="lg:col-span-3 flex flex-col gap-4 justify-between h-full">
             {contactItems.map((item, index) => (
               <motion.a
                 key={index}
@@ -79,25 +79,25 @@ export default function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative p-4 rounded-xl bg-white/[0.02] border border-white/10 hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 flex items-center gap-4"
+                className="group relative p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 flex items-center gap-5 flex-1"
               >
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(255,222,89,0.15)] transition-all duration-300">
-                  <item.icon className="w-5 h-5 text-primary" />
+                <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(255,222,89,0.15)] transition-all duration-300">
+                  <item.icon className="w-6 h-6 text-primary" />
                 </div>
                 
                 {/* Content */}
                 <div className="flex-grow min-w-0">
-                  <h4 className="text-white font-semibold text-sm mb-0.5 group-hover:text-primary transition-colors">
+                  <h4 className="text-white font-semibold text-base mb-1 group-hover:text-primary transition-colors">
                     {item.title}
                   </h4>
-                  <p className="text-gray-400 text-sm truncate">
+                  <p className="text-gray-400 text-sm">
                     {item.content.replace(/\n/g, ', ')}
                   </p>
                 </div>
 
                 {/* Arrow */}
-                <ArrowRight className="w-4 h-4 text-primary/30 group-hover:text-primary flex-shrink-0 transform group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-5 h-5 text-primary/30 group-hover:text-primary flex-shrink-0 transform group-hover:translate-x-1 transition-all" />
               </motion.a>
             ))}
           </div>
